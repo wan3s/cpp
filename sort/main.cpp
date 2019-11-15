@@ -26,7 +26,6 @@ auto my_sort(T arr) {
             right_arr.push_back(*it);
         }
     }
-    
     return 0;
 }
 

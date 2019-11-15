@@ -8,8 +8,14 @@
 
 #include <iostream>
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+using namespace std;
+
+template <typename T>
+auto my_sort(T arr) {
+    return 0;
+}
+
+int main(void) {
+
     return 0;
 }

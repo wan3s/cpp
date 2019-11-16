@@ -13,20 +13,29 @@
 using namespace std;
 
 template <typename T>
-auto my_sort(T arr) {
-    unsigned int length = arr.size;
-    typename T::iterator arr_begin_iter = arr.begin();
-    T left_arr, right_arr, sorted_left_arr, sorted_right_arr;
-    auto middle_elem_value = *(arr_begin_iter
-                               + (length / 2));
-    for (auto it = arr_begin_iter; it != arr.end(); ++it) {
-        if (*it < middle_elem_value) {
-            left_arr.push_back(*it);
-        } else {
-            right_arr.push_back(*it);
+void my_sort (typename T::iterator left, typename T::iterator right) {
+    typename T::iterator i = left, j = right;
+    auto cmp = *((left + right) / 2);
+    do {
+        while (*i < cmp && i < right) {
+            ++i;
         }
+        while (*j > cmp && j > left) {
+            --j;
+        }
+        if (i <= j) {
+            auto tmp = *i;
+            *i = *j;
+            *j = tmp;
+            ++i, --j;
+        }
+    } while (i <= j);
+    if (left < j) {
+        my_sort(left, j);
     }
-    return 0;
+    if (i < right) {
+        my_sort(i, right);
+    }
 }
 
 int main(void) {
